@@ -1,16 +1,8 @@
 function getComputerChoice(){
+    const possibleChoices = ["Rock","Paper","Scissors"];
     let choice;
     let numberChoice = Math.floor(Math.random() * 3);
-    if(numberChoice == 0){
-        choice = "Rock";
-        console.log("Computer chooses Rock");
-    }else if(numberChoice == 1){
-        choice = "Paper";
-        console.log("Computer chooses Paper");
-    }else{
-        choice = "Scissors";
-        console.log("Computer chooses Scissors");
-    }
+    choice = possibleChoices[numberChoice];
     return choice;
 
 }
@@ -46,6 +38,7 @@ function game(){
     for(let i = 0; i < 5; i++){
         let playerSelection = prompt("Enter your choice");
         let computerSelection = getComputerChoice();
+        console.log("Computer chooses "+computerSelection);
         let result = playRound(playerSelection,computerSelection);
 
         if(result == "computer"){
