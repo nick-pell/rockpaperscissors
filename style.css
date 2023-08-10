@@ -1,5 +1,13 @@
+body{
+    font-family: "Comic Sans MS";
+}
+
 h1{
     text-align: center;
+    color:blueviolet;
+    font-style: italic;
+    
+
 
 }
 h2{
@@ -14,12 +22,17 @@ h2{
     
 }
 
+button{
+    padding: 0;
+    border: 2px solid gold ;
+    
+}
+
 #rock,
 #paper,
 #scissors{
     width: 200px;
     height: 200px;
-    font-size: 50px;
 }
 .game-results{
     text-align: center;
@@ -30,3 +43,11 @@ h2{
     padding: 50px;
     font-size: 50px;
 }
+
+#rock img,
+#paper img,
+#scissors img{
+    width:200px;
+    height: 200px;
+}
+
