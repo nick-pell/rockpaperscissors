@@ -7,7 +7,24 @@ function getComputerChoice(){
 
 }
 
-function playRound(playerSelection, computerSelection){
+function playRound(playerSelection){
+
+    if(playerWins == 5 || computerWins == 5){
+
+        if(playerWins == 5){
+            w_message.textContent = "Player wins!";
+            w_text.appendChild(w_message);
+        }else{
+            w_message.textContent = "Computer wins!";
+            w_text.appendChild(w_message);
+
+        }
+        return;
+
+    }
+
+
+    computerSelection = getComputerChoice();
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
     let result;
@@ -21,6 +38,10 @@ function playRound(playerSelection, computerSelection){
        (computerSelection == "paper"&& playerSelection == "rock" )  ||
        (computerSelection == "scissors" && playerSelection == "paper")){
            result = "computer";
+           computerWins++;
+
+           c_message.textContent = `Computer score: ${computerWins}`;
+           c_text.appendChild(c_message);
        }
 
     // user win conditions
@@ -28,39 +49,55 @@ function playRound(playerSelection, computerSelection){
       (playerSelection == "paper"&& computerSelection == "rock" )  ||
       (playerSelection == "scissors" && computerSelection == "paper")){
            result = "user";
+           playerWins++;
+
+           p_message.textContent = `Player score: ${playerWins}`;
+           p_text.appendChild(p_message);
        }
        return result;
 }
 
-function game(){
-    let playerWins = 0;
-    let computerWins = 0;
-    for(let i = 0; i < 5; i++){
-        let playerSelection = prompt("Enter your choice");
-        let computerSelection = getComputerChoice();
-        console.log("Computer chooses "+computerSelection);
-        let result = playRound(playerSelection,computerSelection);
-
-        if(result == "computer"){
-            console.log(computerSelection + " beats " + playerSelection);
-            console.log("Computer wins this round");
-            computerWins++;
-        }else if (result == "user"){
-            console.log(playerSelection + " beats " + computerSelection);
-            console.log("User wins this round");
-            playerWins++;
-        }else{
-            console.log(playerSelection + " ties with " + computerSelection);
-            console.log("It's a tie");
-        }
-    }
-    if (playerWins > computerWins){
-        console.log("User wins the game");
-    }else if(playerWins < computerWins){
-        console.log("Computer wins the game");
-    }else{
-        console.log("User and computer tied the game");
-    }
+function getPlayerChoice(e){
+    let choice = e.target.id;
+    playRound(choice);
+    
 }
 
-game();
+
+let playerWins = 0;
+let computerWins = 0;
+
+const c_text = document.querySelector('.game-results');
+const c_message = document.createElement('div');
+c_message.classList.add("computer-score");
+
+const p_text = document.querySelector('.game-results');
+const p_message = document.createElement('div');
+p_message.classList.add("player-score");
+
+
+const w_text = document.querySelector('.game-results');
+const w_message = document.createElement('div');
+w_message.classList.add("winner");
+
+
+
+
+const rock = document.querySelector('#rock');
+rock.addEventListener('click',getPlayerChoice);
+
+const paper = document.querySelector('#paper');
+paper.addEventListener('click',getPlayerChoice);
+
+
+const scissors = document.querySelector('#scissors');
+scissors.addEventListener('click',getPlayerChoice);
+    
+
+
+
+
+
+
+
+//game();

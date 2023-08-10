@@ -1,0 +1,32 @@
+h1{
+    text-align: center;
+
+}
+h2{
+    text-align: center;
+}
+
+.selection-buttons {
+    display: flex;
+    justify-content: center;
+    gap:50px;
+    padding-top: 100px;
+    
+}
+
+#rock,
+#paper,
+#scissors{
+    width: 200px;
+    height: 200px;
+    font-size: 50px;
+}
+.game-results{
+    text-align: center;
+    padding-top: 50px;
+}
+
+.winner{
+    padding: 50px;
+    font-size: 50px;
+}
